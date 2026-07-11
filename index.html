@@ -4,18 +4,46 @@
   <meta charset="UTF-8">
   <title>My Static HTML Site</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+    }
+    body.dark-mode h1 {
+      color: #66b3ff;
+    }
+    #themeToggle {
+      margin-top: 20px;
+      padding: 10px 18px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0078d4;
+      color: white;
+      cursor: pointer;
+    }
+    #themeToggle:hover {
+      background-color: #005a9e;
+    }
+  </style>
 </head>
 <body>
   <h1>Azure Static Web Apps Demo</h1>
-  <p>GitHub Actions からデプロイしています。</p>
-  
-  <section class="profile">
-    <h2>自己紹介</h2>
-    <ul>
-      <li><strong>氏名：</strong>鵜飼奏帆</li>
-      <li><strong>学籍番号：</strong>25G1018</li>
-      <li><strong>趣味：</strong>カフェ巡り，アニメ鑑賞</li>
-    </ul>
-  </section>
+  <p>GitHub Actions から自動デプロイしています。</p>
+
+  <button id="themeToggle">🌙 ダークモード切り替え</button>
+
+  <script>
+    const btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      btn.textContent = document.body.classList.contains('dark-mode')
+        ? '☀️ ライトモード切り替え'
+        : '🌙 ダークモード切り替え';
+    });
+  </script>
 </body>
 </html>
